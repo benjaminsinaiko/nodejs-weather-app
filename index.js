@@ -1,9 +1,10 @@
 require('dotenv/config');
 
 const request = require('request');
+const argv = require('yargs').argv;
 
 let apiKey = process.env.API_KEY;
-let city = 'chicago';
+let city = argv.c || 'chicago';
 let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 request(url, function(err, response, body) {
